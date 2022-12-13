@@ -45,24 +45,25 @@ XM7 pbias pbias VDD VDD sky130_fd_pr__pfet_01v8_lvt L=1 W=4 nf=4 ad='int((nf+1)/
 
 .param nw = 1
 .param nl = 1
-.param pw = 1
 .param pl = 1
-.param i = 0.1
+
 .control
+let i = 1
 
 
-*alterparam i = 1
-dowhile pw <= 5
-alterparam pw = pw + 1
-reset
+dowhile i <= 5
+.param pw = i
+
 ac dec 20 1 1000g
 plot db(v(out)) 180*cph(v(out))/pi
 
- *alterparam pw = i
+
  *reset
  *ac dec 20 1 1000g
  *plot db(v(out)) 180*cph(v(out))/pi
 
+let i = i + 1
+reset
 end
 
 
