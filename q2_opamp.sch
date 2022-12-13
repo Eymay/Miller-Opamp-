@@ -223,17 +223,25 @@ only_toplevel=true
 value="
 .param nw = 1
 .param nl = 1
-.param pw = 1
 .param pl = 1
 
 .control
+let i = 1
+
 
 dowhile i <= 5
-alterparam pw = i
-reset
+.param pw = i
+
 ac dec 20 1 1000g
-plot ac1.db(v(out)) ac1.180*cph(v(out))/pi
+plot db(v(out)) 180*cph(v(out))/pi
+
+
+ *reset
+ *ac dec 20 1 1000g
+ *plot db(v(out)) 180*cph(v(out))/pi
+
 let i = i + 1
+reset
 end
 
 
@@ -272,11 +280,11 @@ end
 *save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]
 
 
-save all
+*save all
 
-op
+*op
 
-write q2_opamp.raw
+*write q2_opamp.raw
 
 .endc
 "}
@@ -293,8 +301,8 @@ descr="Vds="}
 C {devices/ngspice_get_value.sym} 920 30 0 0 {name=r24 node="@m.xm1.msky130_fd_pr__nfet_01v8[gds]"
 descr="gds="}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1110 -270 0 1 {name=M4
-L=\{nl\}
-W=\{nw\}
+L=1
+W=1
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -307,8 +315,8 @@ model=nfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1330 -270 0 0 {name=M5
-L=\{nl\}
-W=\{nw\}
+L=1
+W=1
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -321,8 +329,8 @@ model=nfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1070 -470 0 0 {name=M3
-L=\{pl\}
-W=\{pw\}
+L=0.5
+W=64
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -332,11 +340,10 @@ ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
-spiceprefix=X
-* l 0.5 w 64}
+spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1370 -470 0 1 {name=M6
-L=\{pl\}
-W=\{pw\}
+L=0.5
+W=64
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -346,8 +353,7 @@ ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
-spiceprefix=X
-* l 0.5 w 64}
+spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 680 -500 0 0 {name=M7
 L=1
 W=4
