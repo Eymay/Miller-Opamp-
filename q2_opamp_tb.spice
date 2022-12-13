@@ -1,0 +1,77 @@
+** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp_tb.sch
+**.subckt q2_opamp_tb
+x1 OUT net2 net3 IBIAS GND VDD q2_opamp
+V1 VDD GND 1.2
+I0 VDD IBIAS 120u
+V2 net1 net2 0 AC 0.1
+V3 net1 GND 0.5
+C1 OUT GND 1p m=1
+.save  v(out)
+V4 net3 net1 0 AC 0.1
+**** begin user architecture code
+
+
+
+.control
+
+save all
+
+op
+write q2_opamp_tb.raw
+
+ac dec 10 1 10e9
+set appendwrite
+write q2_opamp_tb.raw
+
+plot db(v(out)) 180*cph(v(out))/pi
+
+.endc
+
+
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  q2_opamp.sym # of pins=6
+** sym_path: /home/ubuntu/Desktop/design/xschem/q2_opamp.sym
+** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp.sch
+.subckt q2_opamp  OUT MINUS PLUS IBIAS VSS VDD
+*.iopin VDD
+*.iopin VSS
+*.iopin MINUS
+*.iopin PLUS
+*.iopin OUT
+*.iopin IBIAS
+XM2 IBIAS IBIAS VSS VSS sky130_fd_pr__nfet_01v8 L=1 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 pbias IBIAS VSS VSS sky130_fd_pr__nfet_01v8 L=1 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.save  v(ibias)
+.save  v(out)
+.save  v(net1)
+.save  v(vss)
+XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=4 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+XM5 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=4 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+XM3 net1 PLUS IBIAS IBIAS sky130_fd_pr__pfet_01v8_lvt L=0.5 W=2 nf=4 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=8 m=8
+XM6 OUT MINUS IBIAS IBIAS sky130_fd_pr__pfet_01v8_lvt L=0.5 W=2 nf=4 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=8 m=8
+XM7 pbias pbias VDD VDD sky130_fd_pr__pfet_01v8_lvt L=1 W=4 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.end

@@ -1,0 +1,116 @@
+** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp.sch
+**.subckt q2_opamp VDD VSS MINUS PLUS OUT IBIAS
+*.iopin VDD
+*.iopin VSS
+*.iopin MINUS
+*.iopin PLUS
+*.iopin OUT
+*.iopin IBIAS
+V1 PLUS GND 0.5 AC 0.5
+V3 MINUS GND 0.5 AC -0.5
+V5 VSS GND 0
+I0 VDD IBIAS 150u
+XM2 IBIAS IBIAS VSS VSS sky130_fd_pr__nfet_01v8 L=1 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 pbias IBIAS VSS VSS sky130_fd_pr__nfet_01v8 L=1 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.save  v(ibias)
+V2 VDD GND 1.2
+.save  v(out)
+XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=nl W=nw nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=nl W=nw nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net1 PLUS IBIAS IBIAS sky130_fd_pr__pfet_01v8_lvt L=pl W=pw nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 OUT MINUS IBIAS IBIAS sky130_fd_pr__pfet_01v8_lvt L=pl W=pw nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 pbias pbias VDD VDD sky130_fd_pr__pfet_01v8_lvt L=1 W=4 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.save  v(ibias)
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt
+
+
+
+
+.param nw = 1
+.param nl = 1
+.param pw = 1
+.param pl = 1
+.param i = 0.1
+.control
+
+
+*alterparam i = 1
+dowhile pw <= 5
+alterparam pw = pw + 1
+reset
+ac dec 20 1 1000g
+plot db(v(out)) 180*cph(v(out))/pi
+
+ *alterparam pw = i
+ *reset
+ *ac dec 20 1 1000g
+ *plot db(v(out)) 180*cph(v(out))/pi
+
+end
+
+
+
+*ac dec 20 1 100000g
+*run
+*plot db(v(out)) 180*cph(v(out))/pi
+*reset
+
+*save @m.xm1.msky130_fd_pr__nfet_01v8[gm]
+*save @m.xm1.msky130_fd_pr__nfet_01v8[vth]
+*save @m.xm1.msky130_fd_pr__nfet_01v8[vdsat]
+*save @m.xm1.msky130_fd_pr__nfet_01v8[vds]
+*save @m.xm1.msky130_fd_pr__nfet_01v8[id]
+*save @m.xm1.msky130_fd_pr__nfet_01v8[gds]
+*
+*save @m.xm2.msky130_fd_pr__nfet_01v8[gm]
+*save @m.xm2.msky130_fd_pr__nfet_01v8[vth]
+*save @m.xm2.msky130_fd_pr__nfet_01v8[vdsat]
+*save @m.xm2.msky130_fd_pr__nfet_01v8[vds]
+*save @m.xm2.msky130_fd_pr__nfet_01v8[id]
+*save @m.xm2.msky130_fd_pr__nfet_01v8[gds]
+*
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat]
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds]
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[id]
+*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]
+*
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth]
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat]
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds]
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[id]
+*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]
+
+
+*save all
+
+*op
+
+*write q2_opamp.raw
+
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end
