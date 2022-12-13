@@ -212,12 +212,12 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
-voltage=1.024}
+voltage=1.021}
 C {devices/vsource.sym} -250 -120 0 0 {name=V2 value=1.2 only_toplevel=true}
 C {devices/gnd.sym} -250 -90 0 0 {name=l12 lab=GND}
 C {devices/lab_pin.sym} -250 -180 2 0 {name=l13 sig_type=std_logic lab=VDD}
 C {devices/spice_probe.sym} 1400 -380 0 0 {name=p8 attrs=""
-voltage=0.7045}
+voltage=0.6481}
 C {devices/code_shown.sym} 20 50 0 0 {name=NGSPICE
 only_toplevel=true
 value="
@@ -277,8 +277,8 @@ descr="Vds="}
 C {devices/ngspice_get_value.sym} 920 30 0 0 {name=r24 node="@m.xm1.msky130_fd_pr__nfet_01v8[gds]"
 descr="gds="}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1110 -270 0 1 {name=M4
-L=0.5
-W=5
+L=2
+W=20
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -291,8 +291,8 @@ model=nfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1330 -270 0 0 {name=M5
-L=0.5
-W=5
+L=2
+W=20
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -305,9 +305,9 @@ model=nfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1070 -470 0 0 {name=M3
-L=0.5
+L=1
 W=64
-nf=1
+nf=4
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -318,9 +318,9 @@ sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1370 -470 0 1 {name=M6
-L=0.5
+L=1
 W=64
-nf=1
+nf=4
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -349,4 +349,4 @@ C {devices/lab_wire.sym} 700 -420 0 0 {name=l7 sig_type=std_logic lab=pbias}
 C {devices/lab_pin.sym} 1220 -140 2 0 {name=l15 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 1230 -570 2 0 {name=l22 sig_type=std_logic lab=IBIAS}
 C {devices/spice_probe.sym} 1110 -550 0 0 {name=p7 attrs=""
-voltage=1.024}
+voltage=1.021}
