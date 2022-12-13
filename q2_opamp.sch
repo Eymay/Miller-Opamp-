@@ -212,79 +212,55 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
-voltage=1.022}
+voltage=1.024}
 C {devices/vsource.sym} -250 -120 0 0 {name=V2 value=1.2 only_toplevel=true}
 C {devices/gnd.sym} -250 -90 0 0 {name=l12 lab=GND}
 C {devices/lab_pin.sym} -250 -180 2 0 {name=l13 sig_type=std_logic lab=VDD}
 C {devices/spice_probe.sym} 1400 -380 0 0 {name=p8 attrs=""
-voltage=0.6714}
+voltage=0.7045}
 C {devices/code_shown.sym} 20 50 0 0 {name=NGSPICE
 only_toplevel=true
 value="
-.param nw = 1
-.param nl = 1
-.param pl = 1
 
 .control
-let i = 1
 
-
-dowhile i <= 5
-.param pw = i
-
-ac dec 20 1 1000g
+ac dec 20 1 100000g
+run 
 plot db(v(out)) 180*cph(v(out))/pi
-
-
- *reset
- *ac dec 20 1 1000g
- *plot db(v(out)) 180*cph(v(out))/pi
-
-let i = i + 1
 reset
-end
 
+save @m.xm1.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm1.msky130_fd_pr__nfet_01v8[vth]
+save @m.xm1.msky130_fd_pr__nfet_01v8[vdsat]
+save @m.xm1.msky130_fd_pr__nfet_01v8[vds]
+save @m.xm1.msky130_fd_pr__nfet_01v8[id]
+save @m.xm1.msky130_fd_pr__nfet_01v8[gds]
 
+save @m.xm2.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm2.msky130_fd_pr__nfet_01v8[vth]
+save @m.xm2.msky130_fd_pr__nfet_01v8[vdsat]
+save @m.xm2.msky130_fd_pr__nfet_01v8[vds]
+save @m.xm2.msky130_fd_pr__nfet_01v8[id]
+save @m.xm2.msky130_fd_pr__nfet_01v8[gds]
 
-*ac dec 20 1 100000g
-*run 
-*plot db(v(out)) 180*cph(v(out))/pi
-*reset
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[id]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]
 
-*save @m.xm1.msky130_fd_pr__nfet_01v8[gm]
-*save @m.xm1.msky130_fd_pr__nfet_01v8[vth]
-*save @m.xm1.msky130_fd_pr__nfet_01v8[vdsat]
-*save @m.xm1.msky130_fd_pr__nfet_01v8[vds]
-*save @m.xm1.msky130_fd_pr__nfet_01v8[id]
-*save @m.xm1.msky130_fd_pr__nfet_01v8[gds]
-*
-*save @m.xm2.msky130_fd_pr__nfet_01v8[gm]
-*save @m.xm2.msky130_fd_pr__nfet_01v8[vth]
-*save @m.xm2.msky130_fd_pr__nfet_01v8[vdsat]
-*save @m.xm2.msky130_fd_pr__nfet_01v8[vds]
-*save @m.xm2.msky130_fd_pr__nfet_01v8[id]
-*save @m.xm2.msky130_fd_pr__nfet_01v8[gds]
-*
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat]
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds]
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[id]
-*save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]
-*
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth]
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat]
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds]
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[id]
-*save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[id]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]
 
+save all
+op
 
-*save all
-
-*op
-
-*write q2_opamp.raw
+write q2_opamp.raw
 
 .endc
 "}
@@ -301,8 +277,8 @@ descr="Vds="}
 C {devices/ngspice_get_value.sym} 920 30 0 0 {name=r24 node="@m.xm1.msky130_fd_pr__nfet_01v8[gds]"
 descr="gds="}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1110 -270 0 1 {name=M4
-L=1
-W=1
+L=0.5
+W=5
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -315,8 +291,8 @@ model=nfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1330 -270 0 0 {name=M5
-L=1
-W=1
+L=0.5
+W=5
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -373,4 +349,4 @@ C {devices/lab_wire.sym} 700 -420 0 0 {name=l7 sig_type=std_logic lab=pbias}
 C {devices/lab_pin.sym} 1220 -140 2 0 {name=l15 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 1230 -570 2 0 {name=l22 sig_type=std_logic lab=IBIAS}
 C {devices/spice_probe.sym} 1110 -550 0 0 {name=p7 attrs=""
-voltage=1.022}
+voltage=1.024}
