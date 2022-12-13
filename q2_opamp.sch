@@ -191,39 +191,11 @@ only_toplevel=true}
 C {devices/gnd.sym} -450 -90 0 0 {name=l16 lab=GND}
 C {devices/lab_pin.sym} -450 -180 0 1 {name=l17 sig_type=std_logic lab=MINUS}
 C {devices/vsource.sym} -170 -120 0 0 {name=V5 value=0 only_toplevel=true}
-C {devices/isource.sym} -100 -120 0 0 {name=I0 value=100u only_toplevel=true}
+C {devices/isource.sym} -100 -120 0 0 {name=I0 value=12.5u only_toplevel=true}
 C {devices/gnd.sym} -170 -90 0 0 {name=l18 lab=GND}
 C {devices/lab_pin.sym} -170 -180 2 0 {name=l19 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} -100 -180 2 0 {name=l20 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} -100 -60 2 0 {name=l21 sig_type=std_logic lab=IBIAS}
-C {sky130_fd_pr/nfet_01v8.sym} 530 -310 0 1 {name=M2
-L=1
-W=2
-nf=2
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} 870 -310 0 0 {name=M1
-L=1
-W=2
-nf=2
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
 C {devices/code.sym} -440 40 0 0 {name=TT_MODELS
 only_toplevel=true
 format="tcleval( @value )"
@@ -246,12 +218,12 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
-voltage=1.16}
+voltage=0.82}
 C {devices/vsource.sym} -250 -120 0 0 {name=V2 value=1.2 only_toplevel=true}
 C {devices/gnd.sym} -250 -90 0 0 {name=l12 lab=GND}
 C {devices/lab_pin.sym} -250 -180 2 0 {name=l13 sig_type=std_logic lab=VDD}
 C {devices/spice_probe.sym} 1400 -380 0 0 {name=p8 attrs=""
-voltage=0.6659}
+voltage=0.6776}
 C {devices/code_shown.sym} 20 50 0 0 {name=NGSPICE
 only_toplevel=true
 value="
@@ -405,7 +377,7 @@ C {devices/lab_pin.sym} 890 -710 1 0 {name=l14 sig_type=std_logic lab=VDD}
 C {devices/lab_wire.sym} 890 -560 0 0 {name=l7 sig_type=std_logic lab=pbias}
 C {devices/lab_pin.sym} 1220 -140 2 0 {name=l15 sig_type=std_logic lab=VSS}
 C {devices/spice_probe.sym} 1110 -550 0 0 {name=p7 attrs=""
-voltage=1.16}
+voltage=1.17}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1770 -380 0 0 {name=M9
 L=8
 W=4
@@ -456,7 +428,7 @@ value=1p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/res.sym} 1690 -450 1 0 {name=R1
-value=1k
+value=20k
 footprint=1206
 device=resistor
 m=1}
@@ -485,11 +457,11 @@ descr="Vdsat="}
 C {devices/ngspice_get_value.sym} 1980 -660 0 0 {name=r36 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vds])"
 descr="Vds="}
 C {devices/spice_probe.sym} 1190 -330 0 0 {name=p9 attrs=""
-voltage=0.6659}
+voltage=0.6776}
 C {devices/spice_probe.sym} 1790 -510 0 0 {name=p10 attrs=""
-voltage=0.6659}
+voltage=0.112}
 C {devices/spice_probe.sym} 890 -440 0 0 {name=p11 attrs=""
-voltage=0.1837}
+voltage=0.4412}
 C {devices/ngspice_get_value.sym} 1410 -690 0 0 {name=r37 node=@m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
 descr="gm="}
 C {devices/ngspice_get_value.sym} 1410 -730 0 0 {name=r38 node="i(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[id])"
@@ -503,4 +475,32 @@ descr="Vdsat="}
 C {devices/ngspice_get_value.sym} 1330 -730 0 0 {name=r42 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds])"
 descr="Vds="}
 C {devices/lab_wire.sym} 1550 -380 0 0 {name=l24 sig_type=std_logic lab=Vx
+}
+C {sky130_fd_pr/nfet_01v8_lvt.sym} 530 -310 0 1 {name=M12
+L=1
+W=2
+nf=2
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8_lvt
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet_01v8_lvt.sym} 870 -310 0 0 {name=M1
+L=100
+W=90
+nf=100
+mult=100
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8_lvt
+spiceprefix=X
 }

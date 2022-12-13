@@ -9,7 +9,7 @@
 V1 PLUS GND 0.5 AC 0.5
 V3 MINUS GND 0.5 AC -0.5
 V5 VSS GND 0
-I0 VDD IBIAS 100u
+I0 VDD IBIAS 12.5u
 XM2 IBIAS IBIAS VSS VSS sky130_fd_pr__nfet_01v8 L=1 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
@@ -25,10 +25,10 @@ XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/
 XM5 Vx net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM3 net1 PLUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM3 net1 MINUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM6 Vx MINUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM6 Vx PLUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
 XM7 pbias pbias VDD VDD sky130_fd_pr__pfet_01v8_lvt L=1 W=4 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -45,7 +45,7 @@ XM11 net2 pbias VDD VDD sky130_fd_pr__pfet_01v8_lvt L=4 W=4 nf=1 ad='int((nf+1)/
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=80 m=80
 C1 net3 Vx 1p m=1
-R1 OUT net3 1k m=1
+R1 OUT net3 20k m=1
 .save  v(net1)
 .save  v(out)
 .save  v(pbias)
