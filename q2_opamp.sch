@@ -10,27 +10,27 @@ L 4 -470 -190 -460 -200 {}
 L 4 -90 -200 -40 -200 {}
 T {only_toplevel=true attribute set, 
 will be netlisted only if toplevel cell} -340 -230 0 0 0.2 0.2 {layer=4}
-N 1090 -240 1090 -200 {
+N 480 -50 480 -10 {
 lab=VSS}
-N 1090 -200 1350 -200 {
+N 480 -10 740 -10 {
 lab=VSS}
-N 1350 -240 1350 -200 {
+N 740 -50 740 -10 {
 lab=VSS}
-N 1220 -200 1220 -140 {
+N 610 -10 610 50 {
 lab=VSS}
-N 1090 -440 1090 -300 {
+N 480 -250 480 -110 {
 lab=#net1}
-N 1350 -440 1350 -300 {
+N 740 -250 740 -110 {
 lab=Vx}
-N 1090 -550 1090 -500 {
+N 480 -360 480 -310 {
 lab=#net2}
-N 1350 -550 1350 -500 {
+N 740 -360 740 -310 {
 lab=#net2}
-N 1350 -380 1420 -380 {
+N 740 -190 810 -190 {
 lab=Vx}
-N 1090 -500 1090 -470 {
+N 480 -310 480 -280 {
 lab=#net2}
-N 1350 -500 1350 -470 {
+N 740 -310 740 -280 {
 lab=#net2}
 N -350 -180 -350 -150 { lab=PLUS}
 N -450 -180 -450 -150 { lab=MINUS}
@@ -42,91 +42,111 @@ N -100 -90 -100 -60 {
 lab=GND}
 N -250 -180 -250 -150 {
 lab=VDD}
-N 890 -610 890 -340 {
+N 280 -420 280 -150 {
 lab=IBIAS}
-N 810 -640 850 -640 {
+N 200 -450 240 -450 {
 lab=IBIAS}
-N 810 -640 810 -590 {
+N 200 -450 200 -400 {
 lab=IBIAS}
-N 810 -590 890 -590 {
+N 200 -400 280 -400 {
 lab=IBIAS}
-N 890 -710 890 -670 {
+N 280 -520 280 -480 {
 lab=VDD}
-N 1350 -270 1350 -240 {
+N 740 -80 740 -50 {
 lab=VSS}
-N 1090 -270 1090 -240 {
+N 480 -80 480 -50 {
 lab=VSS}
-N 1130 -270 1310 -270 {
+N 520 -80 700 -80 {
 lab=#net1}
-N 1220 -330 1220 -270 {
+N 610 -140 610 -80 {
 lab=#net1}
-N 1090 -330 1220 -330 {
+N 480 -140 610 -140 {
 lab=#net1}
-N 1090 -550 1350 -550 {
+N 480 -360 740 -360 {
 lab=#net2}
-N 1230 -570 1230 -550 {
+N 620 -380 620 -360 {
 lab=#net2}
-N 890 -670 890 -640 {
+N 280 -480 280 -450 {
 lab=VDD}
-N 1420 -380 1750 -380 {
+N 810 -190 1140 -190 {
 lab=Vx}
-N 1350 -200 1790 -200 {
+N 740 -10 1180 -10 {
 lab=VSS}
-N 1790 -340 1790 -200 {
+N 1180 -150 1180 -10 {
 lab=VSS}
-N 1790 -350 1790 -340 {
+N 1180 -160 1180 -150 {
 lab=VSS}
-N 1790 -490 1790 -410 {
+N 1180 -300 1180 -220 {
 lab=OUT}
-N 1790 -620 1790 -490 {
+N 1180 -430 1180 -300 {
 lab=OUT}
-N 1700 -650 1750 -650 {
+N 1090 -460 1140 -460 {
 lab=IBIAS}
-N 1140 -640 1190 -640 {
+N 530 -450 580 -450 {
 lab=IBIAS}
-N 1230 -610 1230 -570 {
+N 620 -420 620 -380 {
 lab=#net2}
-N 1230 -700 1230 -670 {
+N 620 -510 620 -480 {
 lab=VDD}
-N 1790 -720 1790 -680 {
+N 1180 -530 1180 -490 {
 lab=VDD}
-N 1720 -450 1790 -450 {
+N 1110 -260 1180 -260 {
 lab=OUT}
-N 1790 -380 1790 -350 {
+N 1180 -190 1180 -160 {
 lab=VSS}
-N 1790 -680 1790 -650 {
+N 1180 -490 1180 -460 {
 lab=VDD}
-N 1230 -670 1230 -640 {
+N 620 -480 620 -450 {
 lab=VDD}
-C {devices/ngspice_get_value.sym} 1550 -290 0 0 {name=r1 node=@m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
+N 1050 -260 1050 -190 {
+lab=Vx}
+N 1340 -250 1340 -210 {
+lab=GND}
+N 1420 -240 1420 -220 {
+lab=GND}
+N 1340 -220 1420 -220 {
+lab=GND}
+N 1180 -260 1240 -260 {
+lab=OUT}
+N 1240 -310 1240 -260 {
+lab=OUT}
+N 1420 -310 1420 -300 {
+lab=OUT}
+N 1240 -310 1340 -320 {
+lab=OUT}
+N 1340 -320 1340 -310 {
+lab=OUT}
+N 1340 -310 1420 -310 {
+lab=OUT}
+C {devices/ngspice_get_value.sym} 940 -100 0 0 {name=r1 node=@m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
 descr="gm="}
-C {devices/launcher.sym} 1260 -90 0 0 {name=h1
+C {devices/launcher.sym} 650 100 0 0 {name=h1
 descr=Backannotate 
 tclcommand="ngspice::annotate"}
-C {devices/ngspice_get_value.sym} 1550 -330 0 0 {name=r2 node="i(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[id])"
+C {devices/ngspice_get_value.sym} 940 -140 0 0 {name=r2 node="i(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[id])"
 descr="Id="}
-C {devices/ngspice_get_value.sym} 1440 -250 0 0 {name=r3 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth])"
+C {devices/ngspice_get_value.sym} 830 -60 0 0 {name=r3 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth])"
 descr="Vth="}
 C {devices/launcher.sym} -210 80 0 0 {name=h2
 descr="View Raw file" 
 tclcommand="textwindow $netlist_dir/q2_opamp.raw"}
-C {devices/ngspice_get_value.sym} 1440 -290 0 0 {name=r4 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat])"
+C {devices/ngspice_get_value.sym} 830 -100 0 0 {name=r4 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat])"
 descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 1440 -330 0 0 {name=r6 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds])"
+C {devices/ngspice_get_value.sym} 830 -140 0 0 {name=r6 node="v(@m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds])"
 descr="Vds="}
-C {devices/ngspice_get_value.sym} 1550 -250 0 0 {name=r5 node="@m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]"
+C {devices/ngspice_get_value.sym} 940 -60 0 0 {name=r5 node="@m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]"
 descr="gds="}
-C {devices/ngspice_get_value.sym} 1500 -520 0 0 {name=r7 node=@m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
+C {devices/ngspice_get_value.sym} 890 -330 0 0 {name=r7 node=@m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
 descr="gm="}
-C {devices/ngspice_get_value.sym} 1500 -560 0 0 {name=r8 node="i(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[id])"
+C {devices/ngspice_get_value.sym} 890 -370 0 0 {name=r8 node="i(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[id])"
 descr="Id="}
-C {devices/ngspice_get_value.sym} 1390 -480 0 0 {name=r9 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth])"
+C {devices/ngspice_get_value.sym} 780 -290 0 0 {name=r9 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth])"
 descr="Vth="}
-C {devices/ngspice_get_value.sym} 1390 -520 0 0 {name=r10 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
+C {devices/ngspice_get_value.sym} 780 -330 0 0 {name=r10 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
 descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 1390 -560 0 0 {name=r11 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds])"
+C {devices/ngspice_get_value.sym} 780 -370 0 0 {name=r11 node="v(@m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds])"
 descr="Vds="}
-C {devices/ngspice_get_value.sym} 1500 -480 0 0 {name=r12 node="@m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]"
+C {devices/ngspice_get_value.sym} 890 -290 0 0 {name=r12 node="@m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]"
 descr="gds="}
 C {devices/iopin.sym} 50 -440 0 0 {name=p1 lab=VDD}
 C {devices/iopin.sym} 50 -410 0 0 {name=p2 lab=VSS}
@@ -134,21 +154,9 @@ C {devices/iopin.sym} 50 -340 0 0 {name=p3 lab=MINUS}
 C {devices/iopin.sym} 50 -310 0 0 {name=p4 lab=PLUS}
 C {devices/iopin.sym} 50 -270 0 0 {name=p5 lab=OUT}
 C {devices/iopin.sym} 50 -380 0 0 {name=p6 lab=IBIAS}
-C {devices/lab_pin.sym} 1390 -470 2 0 {name=l4 sig_type=std_logic lab=PLUS}
-C {devices/lab_pin.sym} 1050 -470 0 0 {name=l5 sig_type=std_logic lab=MINUS}
-C {devices/lab_pin.sym} 1790 -470 2 0 {name=l6 sig_type=std_logic lab=OUT}
-C {devices/ngspice_get_value.sym} 120 -140 0 0 {name=r13 node=@m.xm2.msky130_fd_pr__nfet_01v8[gm]
-descr="gm="}
-C {devices/ngspice_get_value.sym} 120 -180 0 0 {name=r14 node="i(@m.xm2.msky130_fd_pr__nfet_01v8[id])"
-descr="Id="}
-C {devices/ngspice_get_value.sym} 10 -100 0 0 {name=r15 node="v(@m.xm2.msky130_fd_pr__nfet_01v8[vth])"
-descr="Vth="}
-C {devices/ngspice_get_value.sym} 10 -140 0 0 {name=r16 node="v(@m.xm2.msky130_fd_pr__nfet_01v8[vdsat])"
-descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 10 -180 0 0 {name=r17 node="v(@m.xm2.msky130_fd_pr__nfet_01v8[vds])"
-descr="Vds="}
-C {devices/ngspice_get_value.sym} 120 -100 0 0 {name=r18 node="@m.xm2.msky130_fd_pr__nfet_01v8[gds]"
-descr="gds="}
+C {devices/lab_pin.sym} 780 -280 2 0 {name=l4 sig_type=std_logic lab=PLUS}
+C {devices/lab_pin.sym} 440 -280 0 0 {name=l5 sig_type=std_logic lab=MINUS}
+C {devices/lab_pin.sym} 1180 -280 2 0 {name=l6 sig_type=std_logic lab=OUT}
 C {devices/vsource.sym} -350 -120 0 0 {name=V1 value="0.5 AC 0.5"
 only_toplevel=true}
 C {devices/gnd.sym} -350 -90 0 0 {name=l10 lab=GND}
@@ -174,19 +182,19 @@ spice_ignore=false}
 C {devices/vsource.sym} -250 -120 0 0 {name=V2 value=1.2 only_toplevel=true}
 C {devices/gnd.sym} -250 -90 0 0 {name=l12 lab=GND}
 C {devices/lab_pin.sym} -250 -180 2 0 {name=l13 sig_type=std_logic lab=VDD}
-C {devices/spice_probe.sym} 1400 -380 0 0 {name=p8 attrs=""
-voltage=0.5651}
+C {devices/spice_probe.sym} 790 -190 0 0 {name=p8 attrs=""
+voltage=0.6903}
 C {devices/code_shown.sym} 20 50 0 0 {name=NGSPICE
 only_toplevel=true
 value="
 
 .control
 
-ac dec 20 1 10g
-run 
-plot db(v(out)) 180*cph(v(out))/pi
-plot db(v(Vx)) 180*cph(v(Vx))/pi
-reset
+*ac dec 20 1 10g
+*run 
+*plot db(v(out)) 180*cph(v(out))/pi
+*plot db(v(Vx)) 180*cph(v(Vx))/pi
+*reset
 
 
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
@@ -232,7 +240,7 @@ write q2_opamp.raw
 
 .endc
 "}
-C {sky130_fd_pr/nfet_01v8_lvt.sym} 1110 -270 0 1 {name=M4
+C {sky130_fd_pr/nfet_01v8_lvt.sym} 500 -80 0 1 {name=M4
 L=10
 W=20
 nf=1
@@ -246,7 +254,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8_lvt
 spiceprefix=X
 }
-C {sky130_fd_pr/nfet_01v8_lvt.sym} 1330 -270 0 0 {name=M5
+C {sky130_fd_pr/nfet_01v8_lvt.sym} 720 -80 0 0 {name=M5
 L=10
 W=20
 nf=1
@@ -260,7 +268,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8_lvt
 spiceprefix=X
 }
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 1070 -470 0 0 {name=M3
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 460 -280 0 0 {name=M3
 L=4
 W=64
 nf=4
@@ -273,7 +281,7 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 1370 -470 0 1 {name=M6
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 760 -280 0 1 {name=M6
 L=4
 W=64
 nf=4
@@ -286,7 +294,7 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 870 -640 0 0 {name=M7
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 260 -450 0 0 {name=M7
 L=10
 W=4
 nf=1
@@ -300,15 +308,15 @@ sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 890 -710 1 0 {name=l14 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 1220 -140 2 0 {name=l15 sig_type=std_logic lab=VSS}
-C {devices/spice_probe.sym} 1110 -550 0 0 {name=p7 attrs=""
-voltage=1.067}
-C {sky130_fd_pr/nfet_01v8_lvt.sym} 1770 -380 0 0 {name=M9
-L=8
+C {devices/lab_pin.sym} 280 -520 1 0 {name=l14 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 610 50 2 0 {name=l15 sig_type=std_logic lab=VSS}
+C {devices/spice_probe.sym} 500 -360 0 0 {name=p7 attrs=""
+voltage=1.181}
+C {sky130_fd_pr/nfet_01v8_lvt.sym} 1160 -190 0 0 {name=M9
+L=4
 W=4
 nf=1
-mult=4
+mult=100
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -318,11 +326,11 @@ sa=0 sb=0 sd=0
 model=nfet_01v8_lvt
 spiceprefix=X
 }
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 1770 -650 0 0 {name=M10
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 1160 -460 0 0 {name=M10
 L=10
-W=4
+W=25
 nf=4
-mult=25
+mult=1500
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -331,11 +339,11 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 1210 -640 0 0 {name=M11
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 600 -450 0 0 {name=M11
 L=10
-W=4
+W=40
 nf=1
-mult=80
+mult=100
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -344,53 +352,69 @@ nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X}
-C {devices/lab_pin.sym} 1230 -700 1 0 {name=l22 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 1790 -720 1 0 {name=l23 sig_type=std_logic lab=VDD}
-C {devices/ngspice_get_value.sym} 2010 -300 0 0 {name=r25 node=@m.xm9.msky130_fd_pr__nfet_01v8_lvt[gm]
+C {devices/lab_pin.sym} 620 -510 1 0 {name=l22 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 1180 -530 1 0 {name=l23 sig_type=std_logic lab=VDD}
+C {devices/ngspice_get_value.sym} 1400 -110 0 0 {name=r25 node=@m.xm9.msky130_fd_pr__nfet_01v8_lvt[gm]
 descr="gm="}
-C {devices/ngspice_get_value.sym} 2010 -340 0 0 {name=r26 node="i(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[id])"
+C {devices/ngspice_get_value.sym} 1400 -150 0 0 {name=r26 node="i(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[id])"
 descr="Id="}
-C {devices/ngspice_get_value.sym} 1900 -260 0 0 {name=r27 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vth])"
+C {devices/ngspice_get_value.sym} 1290 -70 0 0 {name=r27 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vth])"
 descr="Vth="}
-C {devices/ngspice_get_value.sym} 1900 -300 0 0 {name=r28 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vdsat])"
+C {devices/ngspice_get_value.sym} 1290 -110 0 0 {name=r28 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vdsat])"
 descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 1900 -340 0 0 {name=r29 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vds])"
+C {devices/ngspice_get_value.sym} 1290 -150 0 0 {name=r29 node="v(@m.xm9.msky130_fd_pr__nfet_01v8_lvt[vds])"
 descr="Vds="}
-C {devices/ngspice_get_value.sym} 2010 -260 0 0 {name=r30 node="@m.xm9.msky130_fd_pr__nfet_01v8_lvt[gds]"
+C {devices/ngspice_get_value.sym} 1400 -70 0 0 {name=r30 node="@m.xm9.msky130_fd_pr__nfet_01v8_lvt[gds]"
 descr="gds="}
-C {devices/ngspice_get_value.sym} 2060 -620 0 0 {name=r31 node=@m.xm10.msky130_fd_pr__pfet_01v8_lvt[gm]
+C {devices/ngspice_get_value.sym} 1450 -430 0 0 {name=r31 node=@m.xm10.msky130_fd_pr__pfet_01v8_lvt[gm]
 descr="gm="}
-C {devices/ngspice_get_value.sym} 2060 -660 0 0 {name=r32 node="i(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[id])"
+C {devices/ngspice_get_value.sym} 1450 -470 0 0 {name=r32 node="i(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[id])"
 descr="Id="}
-C {devices/ngspice_get_value.sym} 2060 -580 0 0 {name=r33 node="@m.xm10.msky130_fd_pr__pfet_01v8_lvt[gds]"
+C {devices/ngspice_get_value.sym} 1450 -390 0 0 {name=r33 node="@m.xm10.msky130_fd_pr__pfet_01v8_lvt[gds]"
 descr="gds="}
-C {devices/ngspice_get_value.sym} 1980 -580 0 0 {name=r34 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vth])"
+C {devices/ngspice_get_value.sym} 1370 -390 0 0 {name=r34 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vth])"
 descr="Vth="}
-C {devices/ngspice_get_value.sym} 1980 -620 0 0 {name=r35 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
+C {devices/ngspice_get_value.sym} 1370 -430 0 0 {name=r35 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
 descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 1980 -660 0 0 {name=r36 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vds])"
+C {devices/ngspice_get_value.sym} 1370 -470 0 0 {name=r36 node="v(@m.xm10.msky130_fd_pr__pfet_01v8_lvt[vds])"
 descr="Vds="}
-C {devices/spice_probe.sym} 1190 -330 0 0 {name=p9 attrs=""
-voltage=0.5651}
-C {devices/spice_probe.sym} 1790 -510 0 0 {name=p10 attrs=""
-voltage=0.5077}
-C {devices/spice_probe.sym} 890 -440 0 0 {name=p11 attrs=""
+C {devices/spice_probe.sym} 580 -140 0 0 {name=p9 attrs=""
+voltage=0.6903}
+C {devices/spice_probe.sym} 1180 -320 0 0 {name=p10 attrs=""
+voltage=0.533}
+C {devices/spice_probe.sym} 280 -250 0 0 {name=p11 attrs=""
 voltage=0.6227}
-C {devices/ngspice_get_value.sym} 1410 -690 0 0 {name=r37 node=@m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
+C {devices/ngspice_get_value.sym} 800 -500 0 0 {name=r37 node=@m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
 descr="gm="}
-C {devices/ngspice_get_value.sym} 1410 -730 0 0 {name=r38 node="i(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[id])"
+C {devices/ngspice_get_value.sym} 800 -540 0 0 {name=r38 node="i(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[id])"
 descr="Id="}
-C {devices/ngspice_get_value.sym} 1410 -650 0 0 {name=r39 node="@m.xm11.msky130_fd_pr__pfet_01v8_lvt[gds]"
+C {devices/ngspice_get_value.sym} 800 -460 0 0 {name=r39 node="@m.xm11.msky130_fd_pr__pfet_01v8_lvt[gds]"
 descr="gds="}
-C {devices/ngspice_get_value.sym} 1330 -650 0 0 {name=r40 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vth])"
+C {devices/ngspice_get_value.sym} 720 -460 0 0 {name=r40 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vth])"
 descr="Vth="}
-C {devices/ngspice_get_value.sym} 1330 -690 0 0 {name=r41 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
+C {devices/ngspice_get_value.sym} 720 -500 0 0 {name=r41 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vdsat])"
 descr="Vdsat="}
-C {devices/ngspice_get_value.sym} 1330 -730 0 0 {name=r42 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds])"
+C {devices/ngspice_get_value.sym} 720 -540 0 0 {name=r42 node="v(@m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds])"
 descr="Vds="}
-C {devices/lab_wire.sym} 1550 -380 0 0 {name=l24 sig_type=std_logic lab=Vx
+C {devices/lab_wire.sym} 940 -190 0 0 {name=l24 sig_type=std_logic lab=Vx
 }
-C {devices/lab_pin.sym} 890 -340 2 0 {name=l1 sig_type=std_logic lab=IBIAS}
+C {devices/lab_pin.sym} 280 -150 2 0 {name=l1 sig_type=std_logic lab=IBIAS}
 C {devices/gnd.sym} -100 -60 0 0 {name=l2 lab=GND}
-C {devices/lab_pin.sym} 1140 -640 0 0 {name=l3 sig_type=std_logic lab=IBIAS}
-C {devices/lab_pin.sym} 1700 -650 0 0 {name=l7 sig_type=std_logic lab=IBIAS}
+C {devices/lab_pin.sym} 530 -450 0 0 {name=l3 sig_type=std_logic lab=IBIAS}
+C {devices/lab_pin.sym} 1090 -460 0 0 {name=l7 sig_type=std_logic lab=IBIAS}
+C {devices/capa.sym} 1080 -260 1 0 {name=C1
+m=1
+value=230f
+footprint=1206
+device="ceramic capacitor"}
+C {devices/capa.sym} 1340 -280 0 0 {name=C2
+m=1
+value=1p
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} 1340 -210 0 0 {name=l8 lab=GND}
+C {devices/res.sym} 1420 -270 0 0 {name=R1
+value=1k
+footprint=1206
+device=resistor
+m=1}

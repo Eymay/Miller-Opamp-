@@ -1,13 +1,10 @@
-** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp.sch
-**.subckt q2_opamp VDD VSS MINUS PLUS OUT IBIAS
+** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp_settling.sch
+**.subckt q2_opamp_settling VDD VSS PLUS OUT IBIAS
 *.iopin VDD
 *.iopin VSS
-*.iopin MINUS
 *.iopin PLUS
 *.iopin OUT
 *.iopin IBIAS
-V1 PLUS GND 0.5 AC 0.5
-V3 MINUS GND 0.5 AC -0.5
 V5 VSS GND 0
 I0 IBIAS GND 12.5u
 V2 VDD GND 1.2
@@ -18,31 +15,29 @@ XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/
 XM5 Vx net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM3 net1 MINUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM3 net1 OUT VDD VDD sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM6 Vx PLUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM6 Vx PLUS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
 XM7 IBIAS IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=80 m=80
-.save  v(net2)
+.save  v(vdd)
 XM9 OUT Vx VSS VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=100 m=100
-XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=25 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=10 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1500 m=1500
-XM11 net2 IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=40 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=100 m=100
 .save  v(net1)
 .save  v(out)
 .save  v(ibias)
 C1 OUT Vx 230f m=1
 C2 OUT GND 1p m=1
 R1 OUT GND 1k m=1
+V3 GND PLUS PULSE(0.2 0.8 1ns 100ps 100ps 120ns 240ns )
 **** begin user architecture code
 
 ** opencircuitdesign pdks install
@@ -59,7 +54,12 @@ R1 OUT GND 1k m=1
 *plot db(v(out)) 180*cph(v(out))/pi
 *plot db(v(Vx)) 180*cph(v(Vx))/pi
 *reset
-
+dc v3 0.2 0.8 0.1
+*tran 0.01n 200n
+*setplot tran1
+plot v(out)
+*op
+reset
 
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
@@ -89,12 +89,12 @@ save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[vds]
 save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[id]
 save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[gds]
 
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vth]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vdsat]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[id]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gds]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vth]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vdsat]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[id]
+*save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gds]
 
 
 save all

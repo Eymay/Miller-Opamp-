@@ -27,53 +27,49 @@ lab=GND}
 N 340 -60 340 -50 {
 lab=GND}
 N 340 -150 340 -120 {
-lab=#net1}
+lab=GND}
 N 560 -240 580 -240 {
-lab=#net2}
+lab=OUT}
 N 770 -200 770 -170 {
 lab=OUT}
 N 770 -110 770 -70 {
 lab=GND}
-N 520 -240 560 -240 {
-lab=#net2}
 N 440 -210 440 -200 {
-lab=#net1}
+lab=GND}
 N 340 -170 340 -150 {
-lab=#net1}
+lab=GND}
 N 440 -200 440 -190 {
-lab=#net1}
+lab=GND}
 N 340 -180 340 -170 {
-lab=#net1}
+lab=GND}
 N 520 -160 580 -160 {
-lab=#net3}
+lab=Vin}
 N 440 -130 440 -110 {
-lab=#net3}
-N 440 -290 440 -270 {
-lab=#net2}
-N 520 -270 520 -240 {
-lab=#net2}
+lab=Vin}
 N 340 -200 340 -180 {
-lab=#net1}
+lab=GND}
 N 340 -200 440 -200 {
-lab=#net1}
-N 440 -290 520 -290 {
-lab=#net2}
-N 520 -290 520 -270 {
-lab=#net2}
+lab=GND}
 N 440 -110 520 -110 {
-lab=#net3}
+lab=Vin}
 N 520 -160 520 -120 {
-lab=#net3}
+lab=Vin}
 N 520 -120 520 -110 {
-lab=#net3}
-N 770 -200 850 -200 {
+lab=Vin}
+N 750 -370 750 -200 {
 lab=OUT}
-N 850 -200 850 -160 {
+N 550 -370 750 -370 {
 lab=OUT}
-N 850 -100 850 -80 {
+N 550 -370 550 -240 {
+lab=OUT}
+N 550 -240 580 -240 {
+lab=OUT}
+N 340 -120 340 -60 {
 lab=GND}
-N 770 -80 850 -80 {
-lab=GND}
+N 770 -200 860 -200 {
+lab=OUT}
+N 860 -200 860 -170 {
+lab=OUT}
 C {devices/code_shown.sym} 10 40 0 0 {name=NGSPICE
 only_toplevel=true 
 value="
@@ -81,7 +77,7 @@ value="
 .control
 
 save all
-
+*tran 0.01n 200n
 op
 write q2_opamp_tb.raw
 
@@ -91,6 +87,8 @@ write q2_opamp_tb.raw
 
 plot db(v(out)) 180*cph(v(out))/pi
 
+setplot tran1
+plot out vin
 .endc
 "}
 C {devices/code.sym} -460 40 0 0 {name=TT_MODELS
@@ -113,8 +111,6 @@ C {devices/gnd.sym} 660 -100 0 0 {name=l1 lab=GND}
 C {devices/vsource.sym} 90 -140 0 0 {name=V1 value=1.2}
 C {devices/isource.sym} 160 -140 0 0 {name=I0 value=12.5u}
 C {devices/gnd.sym} 90 -90 0 0 {name=l2 lab=GND}
-C {devices/vsource.sym} 440 -240 2 0 {name=V2 value="0 AC 0.1"}
-C {devices/vsource.sym} 340 -90 0 0 {name=V3 value=0.688}
 C {devices/gnd.sym} 340 -40 0 0 {name=l4 lab=GND}
 C {devices/lab_pin.sym} 770 -200 2 0 {name=l5 sig_type=std_logic lab=OUT}
 C {devices/lab_pin.sym} 640 -300 1 0 {name=l6 sig_type=std_logic lab=IBIAS}
@@ -130,9 +126,11 @@ device="ceramic capacitor"}
 C {devices/gnd.sym} 770 -70 0 0 {name=l19 lab=GND}
 C {devices/spice_probe.sym} 760 -200 0 0 {name=p1 attrs=""
 voltage=0.9004}
-C {devices/vsource.sym} 440 -160 2 0 {name=V4 value="0 AC 0.1"}
-C {devices/res.sym} 850 -130 0 0 {name=R1
+C {devices/vsource.sym} 440 -160 2 0 {name=V4 value="0.8"}
+C {devices/res.sym} 860 -140 0 0 {name=R1
 value=1k
 footprint=1206
 device=resistor
 m=1}
+C {devices/gnd.sym} 860 -110 0 0 {name=l3 lab=GND}
+C {devices/lab_pin.sym} 490 -110 1 0 {name=l11 sig_type=std_logic lab=Vin}

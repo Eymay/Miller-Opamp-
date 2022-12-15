@@ -1,12 +1,11 @@
-** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp_tb.sch
-**.subckt q2_opamp_tb
-x1 OUT OUT net2 IBIAS GND VDD q2_opamp
+** sch_path: /home/ubuntu/Desktop/design/xschem/q2_opamp_settling_tb.sch
+**.subckt q2_opamp_settling_tb
+x1 OUT OUT Vin IBIAS GND VDD q2_opamp
 V1 VDD GND 1.2
 I0 VDD IBIAS 12.5u
-V3 net1 GND 0.688
 C1 OUT GND 1p m=1
 .save  v(out)
-V4 net2 net1 0 AC 0.1
+V4 Vin GND 0.8
 R1 OUT GND 1k m=1
 **** begin user architecture code
 
@@ -15,7 +14,7 @@ R1 OUT GND 1k m=1
 .control
 
 save all
-
+*tran 0.01n 200n
 op
 write q2_opamp_tb.raw
 
@@ -25,6 +24,8 @@ write q2_opamp_tb.raw
 
 plot db(v(out)) 180*cph(v(out))/pi
 
+setplot tran1
+plot out vin
 .endc
 
 
@@ -63,18 +64,21 @@ XM7 IBIAS IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=4 nf=1 ad='int((nf+1)
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=80 m=80
 .save  v(net2)
-XM9 OUT Vx VSS VSS sky130_fd_pr__nfet_01v8_lvt L=8 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM9 OUT Vx VSS VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=4 m=4
-XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=4 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ sa=0 sb=0 sd=0 mult=100 m=100
+XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=10 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=25 m=25
++ sa=0 sb=0 sd=0 mult=1500 m=1500
 XM11 net2 IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=80 m=80
 .save  v(net1)
 .save  v(out)
 .save  v(ibias)
+C1 OUT Vx 230f m=1
+C2 __UNCONNECTED_PIN__0 GND 1p m=1
+R1 net3 GND 1k m=1
 .ends
 
 .GLOBAL GND
