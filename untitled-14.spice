@@ -1,0 +1,108 @@
+** sch_path: /home/ubuntu/Desktop/design/xschem/untitled-14.sch
+**.subckt untitled-14
+XM1 net2 VIN GNDA GNDA sky130_fd_pr__nfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net2 net1 VDDA VDDA sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net1 net1 VDDA VDDA sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+I0 net1 GNDA 10u
+XM4 VOUT net2 GNDA GNDA sky130_fd_pr__nfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 VOUT net3 VDDA VDDA sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 net3 net3 VDDA VDDA sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+I1 net3 GNDA 10u
+V2 VIN GNDA 0.687149 AC 1
+V3 VDDA GNDA 1.2
+V4 GNDA 0 0
+.save  v(net2)
+.save  v(net1)
+.save  v(net3)
+.save  v(vout)
+C1 VOUT GNDA 10p m=1
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt
+
+
+
+
+.control
+
+*dc V2 0 1.2 0.001
+*setplot dc1
+*plot VOUT
+
+AC dec 20 1 100000000000G
+run
+setplot ac1
+plot db(V(Vout)) 180*cph(V(Vout))/pi
+
+save @m.xm3.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm3.msky130_fd_pr__pfet_01v8[id]
+save @m.xm3.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm3.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm3.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm3.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm3.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm2.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm2.msky130_fd_pr__pfet_01v8[id]
+save @m.xm2.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm2.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm2.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm2.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm2.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm6.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm6.msky130_fd_pr__pfet_01v8[id]
+save @m.xm6.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm6.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm6.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm6.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm6.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm5.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm5.msky130_fd_pr__pfet_01v8[id]
+save @m.xm5.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm5.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm5.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm5.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm5.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm1.msky130_fd_pr__nfet_01v8[vth]
+save @m.xm1.msky130_fd_pr__nfet_01v8[id]
+save @m.xm1.msky130_fd_pr__nfet_01v8[gds]
+save @m.xm1.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm1.msky130_fd_pr__nfet_01v8[vdsat]
+save @m.xm1.msky130_fd_pr__nfet_01v8[cgg]
+save @m.xm1.msky130_fd_pr__nfet_01v8[cgd]
+
+save @m.xm4.msky130_fd_pr__nfet_01v8[vth]
+save @m.xm4.msky130_fd_pr__nfet_01v8[id]
+save @m.xm4.msky130_fd_pr__nfet_01v8[gds]
+save @m.xm4.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm4.msky130_fd_pr__nfet_01v8[vdsat]
+save @m.xm4.msky130_fd_pr__nfet_01v8[cgg]
+save @m.xm4.msky130_fd_pr__nfet_01v8[cgd]
+save all
+op
+
+
+write untitled-14.raw
+
+.endc
+
+
+**** end user architecture code
+**.ends
+.end

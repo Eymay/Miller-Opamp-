@@ -5,7 +5,7 @@ V2 VDD GND 1.2
 XM4 net2 Vin GND GND sky130_fd_pr__nfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM5 Vout net2 GND GND sky130_fd_pr__nfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM5 vout net2 GND GND sky130_fd_pr__nfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
 XM8 net2 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -14,7 +14,7 @@ XM8 net2 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) 
 XM1 net1 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM3 Vout net3 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM3 vout net3 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
 XM6 net3 net3 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -22,8 +22,9 @@ XM6 net3 net3 VDD VDD sky130_fd_pr__pfet_01v8 L=0.18 W=2 nf=1 ad='int((nf+1)/2) 
 + sa=0 sb=0 sd=0 mult=1 m=1
 I1 net1 GND 10u
 I2 net3 GND 10u
-C1 Vout GND 10p m=1
-Vin1 net4 GND sin(0 0.1 1k 0 0 0)
+C1 vout GND 10p m=1
+Vin1 net4 GND 0 sin(0 0.1 1k 0 0 0)
+.save  v(net2)
 **** begin user architecture code
 
 ** opencircuitdesign pdks install
@@ -45,9 +46,23 @@ setplot ac1
 plot db(V(Vout)) 180*cph(V(Vout))/pi
 setplot tran1
 plot V(Vout) Vin
-
+op
+save @m.xm5.msky130_fd_pr__nfet_01v8[cgg]
+save @m.xm5.msky130_fd_pr__nfet_01v8[cgd]
+save @m.xm5.msky130_fd_pr__nfet_01v8[gds]
+save @m.xm5.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm4.msky130_fd_pr__nfet_01v8[cgd]
+save @m.xm4.msky130_fd_pr__nfet_01v8[cgg]
+save @m.xm4.msky130_fd_pr__nfet_01v8[gds]
+save @m.xm4.msky130_fd_pr__nfet_01v8[gm]
+save @m.xm3.msky130_fd_pr__pfet_01v8[cgd]
+save @m.xm3.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm3.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm8.msky130_fd_pr__pfet_01v8[cgd]
+save @m.xm8.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm8.msky130_fd_pr__pfet_01v8[gds]
 save all
-
+op
 
 write q1.raw
 

@@ -1,0 +1,114 @@
+** sch_path: /home/ubuntu/Desktop/design/xschem/P_miller_ota.sch
+**.subckt P_miller_ota
+XM1 net1 net2 VDDA VDDA sky130_fd_pr__pfet_01v8 L=1 W=21.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=148 m=148
+XM2 VOUT net2 VDDA VDDA sky130_fd_pr__pfet_01v8 L=1 W=21.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=348 m=348
+XM3 net3 VCMN net1 VDDA sky130_fd_pr__pfet_01v8_lvt L=0.5 W=14.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=50 m=50
+XM4 net4 VCMP net1 VDDA sky130_fd_pr__pfet_01v8_lvt L=0.5 W=14.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=50 m=50
+XM5 net3 net3 GNDA GNDA sky130_fd_pr__nfet_01v8_lvt L=1 W=13.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=5 m=5
+XM6 net4 net3 GNDA GNDA sky130_fd_pr__nfet_01v8_lvt L=1 W=13.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=5 m=5
+XM7 VOUT net4 GNDA GNDA sky130_fd_pr__nfet_01v8_lvt L=1 W=14.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+R2 GNDA VOUT 1k m=1
+C2 GNDA VOUT 2p m=1
+V5 VDDA GNDA 1.2
+V8 GNDA 0 0
+V1 net5 GNDA 0.5 AC 1
+V2 VCMN GNDA 0.5
+R3 net5 VCMP 500 m=1
+V3 net2 GNDA 0.15
+.save  v(net3)
+.save  v(vout)
+.save  v(net1)
+.save  v(net4)
+R1 net4 net6 500 m=1
+C1 net6 VOUT 3p m=1
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt
+
+
+
+
+.control
+save @m.xm1.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm1.msky130_fd_pr__pfet_01v8[id]
+save @m.xm1.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm1.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm1.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm1.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm1.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm2.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm2.msky130_fd_pr__pfet_01v8[id]
+save @m.xm2.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm2.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm2.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm2.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm2.msky130_fd_pr__pfet_01v8[cgd]
+
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[vth]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[id]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[gds]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[gm]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[vdsat]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[cgg]
+save @m.xm3.msky130_fd_pr__pfet_01v8_lvt[cgd]
+
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[vth]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[id]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[gds]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[gm]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[vdsat]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[cgg]
+save @m.xm4.msky130_fd_pr__pfet_01v8_lvt[cgd]
+
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[id]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[cgg]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[cgd]
+
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[vth]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[id]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[gds]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[gm]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[vdsat]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[cgg]
+save @m.xm6.msky130_fd_pr__nfet_01v8_lvt[cgd]
+
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[vth]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[id]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[gds]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[gm]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[vdsat]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[cgg]
+save @m.xm7.msky130_fd_pr__nfet_01v8_lvt[cgd]
+
+save all
+op
+ac dec 100 1 100T
+*dc V1 0 1.2 0.0001
+write P_miller_ota.raw
+
+.endc
+
+
+**** end user architecture code
+**.ends
+.end

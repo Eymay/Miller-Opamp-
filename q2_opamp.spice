@@ -6,43 +6,42 @@
 *.iopin PLUS
 *.iopin OUT
 *.iopin IBIAS
-V1 PLUS GND 0.5 AC 0.5
 V3 MINUS GND 0.5 AC -0.5
 V5 VSS GND 0
-I0 IBIAS GND 12.5u
 V2 VDD GND 1.2
 .save  v(vx)
-XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM4 net1 net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=30 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM5 Vx net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=10 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM5 Vx net1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=30 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
-XM3 net1 MINUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM3 net1 net4 net2 net2 sky130_fd_pr__pfet_01v8_lvt L=1 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
-XM6 Vx PLUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=4 W=64 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ sa=0 sb=0 sd=0 mult=50 m=50
+XM6 Vx PLUS net2 net2 sky130_fd_pr__pfet_01v8_lvt L=1 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
-XM7 IBIAS IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=80 m=80
++ sa=0 sb=0 sd=0 mult=50 m=50
 .save  v(net2)
-XM9 OUT Vx VSS VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM9 OUT Vx VSS VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=30 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=100 m=100
-XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=25 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1500 m=1500
-XM11 net2 IBIAS VDD VDD sky130_fd_pr__pfet_01v8_lvt L=10 W=40 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=100 m=100
++ sa=0 sb=0 sd=0 mult=2 m=2
 .save  v(net1)
 .save  v(out)
-.save  v(ibias)
-C1 OUT Vx 230f m=1
+C1 net3 Vx 4.5p m=1
 C2 OUT GND 1p m=1
 R1 OUT GND 1k m=1
+R2 PLUS net5 1k m=1
+R3 OUT net3 600 m=1
+XM10 OUT IBIAS VDD VDD sky130_fd_pr__pfet_01v8 L=1 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=285 m=285
+XM11 net2 IBIAS VDD VDD sky130_fd_pr__pfet_01v8 L=1 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=100 m=100
+V4 IBIAS GND 0.15
+V1 net5 GND 0.5 AC 1
+V6 net4 GND 0.5
 **** begin user architecture code
 
 ** opencircuitdesign pdks install
@@ -54,12 +53,17 @@ R1 OUT GND 1k m=1
 
 .control
 
-*ac dec 20 1 10g
+ac dec 20 1 10000000g
 *run
-*plot db(v(out)) 180*cph(v(out))/pi
+plot db(v(out)) 180*cph(v(out))/pi
 *plot db(v(Vx)) 180*cph(v(Vx))/pi
 *reset
-
+*tran 100n 10m
+*dc v1 0.2 0.8 0.001
+*plot out
+setplot tran1
+plot vout
+*plot v(out) v(plus)
 
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gm]
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vth]
@@ -67,6 +71,8 @@ save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vdsat]
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[vds]
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[id]
 save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[gds]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[cgg]
+save @m.xm5.msky130_fd_pr__nfet_01v8_lvt[cgd]
 
 save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gm]
 save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vth]
@@ -74,6 +80,8 @@ save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vdsat]
 save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[vds]
 save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[id]
 save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[gds]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[cgg]
+save @m.xm6.msky130_fd_pr__pfet_01v8_lvt[cgd]
 
 save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[gm]
 save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[vth]
@@ -81,21 +89,27 @@ save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[vdsat]
 save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[vds]
 save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[id]
 save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[gds]
+save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[cgg]
+save @m.xm9.msky130_fd_pr__nfet_01v8_lvt[cgd]
 
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[gm]
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[vth]
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[vdsat]
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[vds]
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[id]
-save @m.xm10.msky130_fd_pr__pfet_01v8_lvt[gds]
+save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm10.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm10.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm10.msky130_fd_pr__pfet_01v8[vds]
+save @m.xm10.msky130_fd_pr__pfet_01v8[id]
+save @m.xm10.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm10.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm10.msky130_fd_pr__pfet_01v8[cgd]
+save @m.xm10.msky130_fd_pr__pfet_01v8[cdb]
 
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gm]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vth]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vdsat]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[vds]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[id]
-save @m.xm11.msky130_fd_pr__pfet_01v8_lvt[gds]
-
+save @m.xm11.msky130_fd_pr__pfet_01v8[gm]
+save @m.xm11.msky130_fd_pr__pfet_01v8[vth]
+save @m.xm11.msky130_fd_pr__pfet_01v8[vdsat]
+save @m.xm11.msky130_fd_pr__pfet_01v8[vds]
+save @m.xm11.msky130_fd_pr__pfet_01v8[id]
+save @m.xm11.msky130_fd_pr__pfet_01v8[gds]
+save @m.xm11.msky130_fd_pr__pfet_01v8[cgg]
+save @m.xm11.msky130_fd_pr__pfet_01v8[cgd]
 
 save all
 op
